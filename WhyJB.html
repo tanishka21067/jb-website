@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why JB Enterprises - Rubber Moulded Expert</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar Styles */
+        nav {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-left: 1rem;
+        }
+
+        .menu-toggle {
+            display: flex;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a.active {
+            color: #93c5fd;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #93c5fd;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 0;
+        }
+
+        .mobile-menu a.active {
+            color: #93c5fd;
+            font-weight: 600;
+        }
+
+        .mobile-menu a:hover {
+            color: #93c5fd;
+        }
+
+        #why-us {
+            background-color: #f3f4f6;
+            padding: 5rem 1rem;
+        }
+
+        #why-us h2 {
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        #why-us p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            text-align: center;
+            margin-bottom: 2rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #4b5563;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 2rem 1rem;
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-card {
+            background-color: #2b4a8c;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #d1d5db;
+        }
+
+        .footer-card p, .footer-card a {
+            color: #d1d5db;
+            font-size: 1rem;
+            text-decoration: none;
+            line-height: 1.5;
+        }
+
+        .footer-card a:hover {
+            color: #93c5fd;
+        }
+
+        .footer-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-card .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-card .social-links a {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-card .social-links svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.25rem;
+        }
+
+        @media (min-width: 1024px) {
+            footer .container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .copyright {
+            text-align: center;
+            color: #d1d5db;
+            margin-top: 1.5rem;
+            grid-column: 1 / -1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .mobile-menu {
+                display: flex;
+            }
+            footer .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-container">
+            <div class="nav-logo">
+                <button class="menu-toggle" aria-label="Toggle Menu" onclick="toggleMenu()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+                <h1>JB Enterprises</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a class="nav-link" href="AboutUs.html">About Us</a>
+                <a class="active" href="WhyJB.html">Why Us</a>
+                <a class="nav-link" href="Products.html">Products</a>
+                <a class="nav-link" href="industries.html">Industries</a>
+            </div>
+        </div>
+        <div class="mobile-menu container" id="mobile-menu" style="display: none;">
+            <a href="index.html" class="nav-link">Home</a>
+                <a class="nav-link" href="AboutUs.html">About Us</a>
+                <a class="active" href="WhyJB.html">Why Us</a>
+                <a class="nav-link" href="Products.html">Products</a>
+                <a class="nav-link" href="industries.html">Industries</a>
+        </div>
+    </nav>
+</body>
+<script>
+// Hamburger menu toggle for both laptop and mobile
+function toggleMenu() {
+    var menu = document.getElementById('mobile-menu');
+    if (menu.style.display === 'flex') {
+        menu.style.display = 'none';
+    } else {
+        menu.style.display = 'flex';
+    }
+}
+// Hide mobile menu on resize if desktop
+window.addEventListener('resize', function() {
+    var menu = document.getElementById('mobile-menu');
+    if (window.innerWidth > 768) {
+        menu.style.display = 'none';
+    }
+});
+</script>
+
+    <section id="why-us">
+        <div class="container">
+            <h2>Why JB Enterprises?</h2>
+            <p>
+                At JB Enterprises, we are committed to delivering exceptional rubber moulded products that empower industries worldwide. Here’s why we are your trusted partner:
+            </p>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Proven Expertise</h3>
+                    <p>
+                        With over seven years of experience since our founding in 2016, we bring deep industry knowledge to every project, ensuring high-quality outcomes.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Custom Solutions</h3>
+                    <p>
+                        We specialize in custom-made rubber products tailored to your specific requirements, delivering solutions that fit your unique needs.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>In-House Die Design</h3>
+                    <p>
+                        Our in-house rubber seal die designing and manufacturing capabilities ensure precision, efficiency, and fast turnaround times.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Quality Assurance</h3>
+                    <p>
+                        Every product undergoes rigorous quality checks to meet the highest standards of durability and performance.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Innovative Approach</h3>
+                    <p>
+                        We leverage cutting-edge technology and innovative processes to stay ahead in the rubber moulding industry.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Customer-Centric Service</h3>
+                    <p>
+                        Our dedicated team prioritizes your satisfaction, offering personalized support and reliable delivery to meet your timelines.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-card">
+                <h3>Contact Us</h3>
+                <p>
+                    JB Enterprises<br>
+                    Plot No.12/27/Block No.-D-1, Near Vaishali Hotel,<br>
+                    MIDC, Thermax Chowk, Chinchwad, Pune-19<br>
+                    Email: jbenterprisesmarketing@gmail.com<br>
+                    Phone: +91 987 654 3210
+                </p>
+            </div>
+            <div class="footer-card">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="WhyJB.html">Why Us</a></li>
+                    <li><a href="Products.html">Products</a></li>
+                    <li><a href="Industries.html">Industries</a></li>
+                </ul>
+            </div>
+            <div class="footer-card">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" style="display: flex; align-items: center;">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 9h2v2H7V9zm0 4h2v2H7v-2zm4-4h2v2h-2V9zm0 4h2v2h-2v-2zm4-4h2v2h-2V9zm0 4h2v2h-2v-2z"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a href="#" style="display: flex; align-items: center;">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22.46 6C21.69 4.61 20.14 3.7 18.5 3.7c-1.64 0-3.19.91-3.96 2.3-.51 1.07-.59 2.29-.25 3.42.24.79.71 1.52 1.36 2.17C10.41 13.42 8.87 14.33 7.23 14.33c-2.48 0-4.5-1.01-6-2.73V6h12v12H7.23c1.5 1.72 3.52 2.73 6 2.73s4.5-1.01 6-2.73c.75-.65 1.22-1.38 1.46-2.17.34-1.13.26-2.35-.25-3.42zm-3.04 2.3c-.51-1.07-1.64-1.72-2.8-1.72H9.2c-1.16 0-2.29.65-2.8 1.72-.51 1.07-.59 2.29-.25 3.42.24.79.71 1.52 1.36 2.17 1.25 1.25 3.03 2 4.89 2 1.86 0 3.64-.75 4.89-2 .65-.65 1.12-1.38 1.36-2.17.34-1.13.26-2.35-.25-3.42z"/>
+                        </svg>
+                        Twitter
+                    </a>
+                    <a href="tel:+919876543210" style="display: flex; align-items: center;">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c0 1.14.28 2.24.81 3.21.53.97 1.27 1.83 2.16 2.48.89.65 1.92 1.09 3.01 1.09 1.09 0 2.12-.44 3.01-1.09.89-.65 1.63-1.51 2.16-2.48.53-.97.81-2.07.81-3.21 0-3.31-2.69-6-6-6-3.31 0-6 2.69-6 6zm1.41 0h9.18c0-2.76-2.24-5-5-5s-5 2.24-5 5zm5 2.24c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 2.24c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
+                        </svg>
+                        Phone
+                    </a>
+                </div>
+            </div>
+            <div class="copyright">© 2025 JB Enterprises. All rights reserved.</div>
+        </div>
+    </footer>
+</body>
+</html>
