@@ -156,6 +156,7 @@ nav {
 #home {
     background-color: #f3f4f6;
     padding: 6rem 1rem 5rem;
+
     text-align: center;
     margin-top: 0;
 }
@@ -175,11 +176,23 @@ nav {
     width: 100vw;
     max-width: 100vw;
     overflow: visible;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+   margin-top: 94px;
+    padding: 20px 0;
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    overflow: hidden;
 }
 
 .slider {
     display: flex;
     width: 100vw;
+    width: 100%;
     height: 500px;
     position: relative;
     overflow: hidden;
@@ -207,6 +220,13 @@ nav {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    width: 120%; /* Extend image width to cover blank spaces */
+    height: 100%;
+    object-fit: cover;
+   
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Center the image horizontally */
 }
 
 .slider-dots {
@@ -260,6 +280,10 @@ nav {
     .slide img {
         width: 250%; /* Even wider on mobile */
         height: 100%;
+        height: 300px;
+    }
+    .slide img {
+        width: 120%; /* Maintain wider image on mobile */
         transform: translateX(-50%);
     }
     .arrow {
@@ -351,6 +375,8 @@ nav {
 
 .card {
     background-color: #f3f4f6;
+
+    background-color: #e2e6ee;
     padding: 1.5rem;
     border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
