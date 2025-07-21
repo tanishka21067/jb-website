@@ -195,10 +195,10 @@ nav {
 }
 
 .slide img {
-    width: 120%; /* Extend image width to cover blank spaces */
+    width: 200%; /* Extend image width to cover blank spaces */
     height: 100%;
     object-fit: cover;
-   
+   display: block;
     position: absolute;
     left: 50%;
     transform: translateX(-50%); /* Center the image horizontally */
