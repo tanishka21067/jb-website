@@ -4,16 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products & Materials - JB Enterprises</title>
-        <link rel="stylesheet" href="index.css">
-
     <style>
-       
-      *{
-        box-sizing: border-box;
-        font-family: sans-serif;
-        margin: 0 !important;
-      }
-       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar Styles */
+        nav {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-left: 1rem;
+        }
+
+        .menu-toggle {
+            display: flex;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a.active {
+            color: #93c5fd;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #93c5fd;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 0;
+        }
+
+        .mobile-menu a.active {
+            color: #93c5fd;
+            font-weight: 600;
+        }
+
+        .mobile-menu a:hover {
+            color: #93c5fd;
+        }
+
         #products {
             background-color: #f3f4f6;
             padding: 5rem 1rem;
@@ -74,16 +159,10 @@
 
         .grid-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
             max-width: 1000px;
             margin: 0 auto;
-        }
-
-        @media (max-width: 600px) {
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
         }
 
         .card {
@@ -91,45 +170,74 @@
             border-radius: 0.5rem;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            width: 100%;
+            height: 200px; /* Default height for laptop view */
+            transition: height 0.3s ease;
         }
 
-        .card-image {
-            height: 180px;
-            background-color: #93c5fd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.25rem;
-            font-weight: 600;
+        .card.expanded {
+            height: auto; /* Expand to fit content */
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 140px; /* Image height for both views */
+            object-fit: contain;
+            border-radius: 0.5rem 0.5rem 0 0;
         }
 
         .card-content {
-            padding: 1.5rem;
+            padding: 0.5rem;
+            display: none;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s ease;
+            word-wrap: break-word; /* Ensure text wraps within the card */
         }
 
         .card h4 {
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: #1e3a8a;
-            margin-bottom: 0.75rem;
+            margin: 0.3rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem; /* Space between text and arrow */
+            padding: 0 0.5rem;
+            cursor: pointer;
+            word-wrap: break-word; /* Ensure title text wraps */
+        }
+
+        .card h4 .arrow {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #1e3a8a;
+            transition: transform 0.3s;
+        }
+
+        .card h4.active .arrow {
+            transform: rotate(180deg);
         }
 
         .card p {
-            font-size: 1.125rem;
+            font-size: 0.85rem;
             color: #4b5563;
-            margin-bottom: 1rem;
+            margin-bottom: 0.3rem;
+            word-wrap: break-word; /* Ensure description text wraps */
         }
 
         .card ul {
             list-style-type: disc;
-            padding-left: 1.5rem;
+            padding-left: 1rem;
         }
 
         .card ul li {
-            font-size: 1.125rem;
+            font-size: 0.85rem;
             color: #4b5563;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.2rem;
+            word-wrap: break-word; /* Ensure list item text wraps */
         }
 
         .section p {
@@ -155,7 +263,7 @@
         }
 
         .footer-card {
-            background-color: #2b4a8c;
+            background-color: #2b4a8a;
             padding: 1.5rem;
             border-radius: 0.5rem;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -217,7 +325,7 @@
             grid-column: 1 / -1;
         }
 
-        /* Responsive Design */
+        /* Responsive Design for Mobile */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -226,10 +334,80 @@
                 display: flex;
             }
             .mobile-menu {
+                display: none;
+            }
+            .mobile-menu.active {
                 display: flex;
             }
-            footer .container {
+            #products {
+                padding: 2rem 0.75rem; /* Slightly increased padding for better spacing */
+            }
+            #products h2 {
+                font-size: 1.5rem;
+            }
+            #products p {
+                font-size: 1rem;
+                padding: 0 0.75rem; /* Adjusted padding for mobile */
+                max-width: 100%; /* Ensure text stays within bounds */
+                overflow-wrap: break-word; /* Prevent text overflow */
+            }
+            .tabs {
+                flex-direction: column;
+                align-items: stretch; /* Ensure tabs take full width */
+                padding: 0 0.75rem; /* Adjusted padding */
+                gap: 0.75rem; /* Slightly increased gap for better spacing */
+            }
+            .tab-button {
+                width: 100%;
+                margin-bottom: 0.5rem;
+                font-size: 1rem; /* Slightly smaller font for better fit */
+            }
+            .grid-container {
                 grid-template-columns: 1fr;
+                gap: 0.75rem; /* Increased gap for better separation */
+                padding: 0 0.75rem; /* Adjusted padding */
+            }
+            .card {
+                height: auto; /* Reset height for mobile */
+                max-width: 100%; /* Prevent card from exceeding container width */
+                margin: 0 auto; /* Center card */
+                padding: 0.5rem; /* Add padding to card for better content spacing */
+            }
+            .card.expanded {
+                height: auto; /* Ensure expanded state fits content */
+            }
+            .card-image img {
+                height: 140px; /* Match image height */
+                width: 100%; /* Ensure image fits within card */
+                object-fit: contain;
+            }
+            .card-content {
+                display: none;
+                height: 0;
+                transition: height 0.3s ease;
+                padding: 0.75rem; /* Increased padding for better readability */
+                max-width: 100%; /* Prevent content from exceeding card width */
+                overflow-wrap: break-word; /* Ensure text wraps */
+            }
+            .card h4 {
+                padding: 0 0.75rem; /* Adjusted padding */
+                max-width: 100%; /* Prevent title from overflowing */
+                overflow-wrap: break-word; /* Ensure title text wraps */
+                font-size: 1rem; /* Slightly smaller font for mobile */
+            }
+            .card p {
+                padding: 0 0.75rem; /* Adjusted padding */
+                max-width: 100%; /* Prevent overflow */
+                overflow-wrap: break-word; /* Ensure description text wraps */
+            }
+            .card ul {
+                padding-left: 1.75rem; /* Slightly increased list padding for mobile */
+                max-width: 100%; /* Prevent list from overflowing */
+            }
+            .card ul li {
+                max-width: 100%; /* Prevent list items from overflowing */
+                overflow-wrap: break-word; /* Ensure list item text wraps */
+                font-size: 0.8rem; /* Slightly smaller font for better fit */
             }
         }
     </style>
@@ -250,6 +428,87 @@
             // Activate the first tab by default
             buttons[0].classList.add('active');
             contents[0].classList.add('active');
+
+            // Toggle content and card size on product name click for both mobile and laptop views
+            document.querySelectorAll('.card h4').forEach(header => {
+                header.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const card = this.closest('.card');
+                    const arrow = this.querySelector('.arrow');
+                    const isMobile = window.innerWidth <= 768;
+
+                    if (isMobile) {
+                        if (content.style.height === '0px' || content.style.height === '') {
+                            content.style.display = 'block';
+                            content.style.height = content.scrollHeight + 'px';
+                            card.classList.add('expanded');
+                            header.classList.add('active');
+                        } else {
+                            content.style.height = '0';
+                            setTimeout(() => {
+                                content.style.display = 'none';
+                            }, 300);
+                            card.classList.remove('expanded');
+                            header.classList.remove('active');
+                        }
+                    } else {
+                        if (content.style.display === 'none' || content.style.display === '') {
+                            content.style.display = 'block';
+                            content.style.height = 'auto';
+                            card.classList.add('expanded');
+                            header.classList.add('active');
+                        } else {
+                            content.style.display = 'none';
+                            content.style.height = '0';
+                            card.classList.remove('expanded');
+                            header.classList.remove('active');
+                        }
+                    }
+                });
+            });
+
+            // Initialize content visibility and card size based on screen size
+            document.querySelectorAll('.card').forEach(card => {
+                const content = card.querySelector('.card-content');
+                const header = card.querySelector('h4');
+                if (window.innerWidth > 768) {
+                    content.style.display = 'none';
+                    content.style.height = '0';
+                    card.classList.remove('expanded');
+                    header.classList.remove('active');
+                } else {
+                    content.style.display = 'none';
+                    content.style.height = '0';
+                    card.classList.remove('expanded');
+                    header.classList.remove('active');
+                }
+            });
+
+            // Update content visibility and card size on window resize
+            window.addEventListener('resize', function () {
+                document.querySelectorAll('.card').forEach(card => {
+                    const content = card.querySelector('.card-content');
+                    const header = card.querySelector('h4');
+                    if (window.innerWidth > 768) {
+                        content.style.display = 'none';
+                        content.style.height = '0';
+                        card.classList.remove('expanded');
+                        header.classList.remove('active');
+                    } else {
+                        content.style.display = 'none';
+                        content.style.height = '0';
+                        card.classList.remove('expanded');
+                        header.classList.remove('active');
+                    }
+                });
+            });
+
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            menuToggle.addEventListener('click', function () {
+                mobileMenu.classList.toggle('active');
+            });
         });
     </script>
 </head>
@@ -274,31 +533,30 @@
         </div>
         <div class="mobile-menu container" id="mobile-menu" style="display: none;">
             <a href="index.html" class="nav-link">Home</a>
-                <a class="nav-link" href="AboutUs.html">About Us</a>
-                <a class="nav-link" href="WhyJB.html">Why Us</a>
-                <a class="active" href="Products.html">Products</a>
-                <a class="nav-link" href="industries.html">Industries</a>
+            <a class="nav-link" href="AboutUs.html">About Us</a>
+            <a class="nav-link" href="WhyJB.html">Why Us</a>
+            <a class="active" href="Products.html">Products</a>
+            <a class="nav-link" href="industries.html">Industries</a>
         </div>
     </nav>
-</body>
-<script>
-// Hamburger menu toggle for both laptop and mobile
-function toggleMenu() {
-    var menu = document.getElementById('mobile-menu');
-    if (menu.style.display === 'flex') {
-        menu.style.display = 'none';
-    } else {
-        menu.style.display = 'flex';
-    }
-}
-// Hide mobile menu on resize if desktop
-window.addEventListener('resize', function() {
-    var menu = document.getElementById('mobile-menu');
-    if (window.innerWidth > 768) {
-        menu.style.display = 'none';
-    }
-});
-</script>
+    <script>
+        // Hamburger menu toggle for both laptop and mobile
+        function toggleMenu() {
+            var menu = document.getElementById('mobile-menu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+        // Hide mobile menu on resize if desktop
+        window.addEventListener('resize', function() {
+            var menu = document.getElementById('mobile-menu');
+            if (window.innerWidth > 768) {
+                menu.style.display = 'none';
+            }
+        });
+    </script>
 
     <section id="products">
         <div class="container">
@@ -307,73 +565,128 @@ window.addEventListener('resize', function() {
                 At JB Enterprises, we offer a diverse range of rubber products crafted with precision and supported by our in-house die design and manufacturing capabilities.
             </p>
             <div class="tabs">
-                <button class="tab-button" data-tab="tab1">Rubber Products</button>
-                <button class="tab-button" data-tab="tab2">Materials Used</button>
+                <button class="tab-button" data-tab="tab1">General Rubber Components</button>
+                <button class="tab-button" data-tab="tab2">Industrial Rubber Products</button>
+                <button class="tab-button" data-tab="tab3">Automotive Rubber Components</button>
+                <button class="tab-button" data-tab="tab4">Specialized/Custom Rubber Products</button>
+                <button class="tab-button" data-tab="tab5">Construction and Civil Use</button>
             </div>
             <div class="tab-content active" id="tab1">
                 <div class="grid-container">
                     <div class="card">
-        <div class="card-image">
-            <img src="https://i.postimg.cc/YqBCgk9H/image.png" alt="Gaskets and Seals" style="width:700px; height:180px; object-fit:contain; border-radius:0.5rem;">
-        </div>
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/9XwjS3k7/image.png" alt="Rubber Moulded Parts">
+                        </div>
+                        <h4 class="product-title">Rubber Moulded Parts <span class="arrow"></span></h4>
                         <div class="card-content">
-                            <h4>Gaskets and Seals</h4>
-                            <p>Precision-engineered components designed to provide leak-proof performance across various industries.</p>
+                            <p>Custom-shaped rubber components made using precision molds.</p>
                             <ul>
-                                <li>Customizable for specific applications</li>
-                                <li>Ensures reliability and durability</li>
+                                <li>Used in automotive</li>
+                                <li>Used in industrial, electrical, and sealing applications for durability and fit</li>
                             </ul>
                         </div>
                     </div>
                     <div class="card">
-        <div class="card-image">
-            <img src="https://i.postimg.cc/FR2j5R4R/image.png" alt="O-Rings" style="width:300px; height:180px; object-fit:cover; border-radius:0.5rem;">
-        </div>
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/d0JmLvYh/image.png" alt="Gaskets">
+                        </div>
+                        <h4 class="product-title">Gaskets <span class="arrow"></span></h4>
                         <div class="card-content">
-                            <h4>O-Rings</h4>
-                            <p>Versatile sealing rings available in multiple sizes for industrial and automotive use.</p>
+                            <p>Flat rubber components that create a seal between two surfaces to prevent leaks.</p>
                             <ul>
-                                <li>High flexibility and sealing efficiency</li>
-                                <li>Suitable for diverse pressure conditions</li>
+                                <li>Used in engines</li>
+                                <li>Used in pipelines, machinery, and electrical enclosures</li>
                             </ul>
                         </div>
                     </div>
                     <div class="card">
-        <div class="card-image">
-            <img src="https://i.postimg.cc/Z0kn5B79/image.png" alt="Rubber Moulded Components" style="width:500px; height:190px; object-fit:contain; border-radius:0.5rem;">
-        </div>
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/26K4cZBW/image.png" alt="O-Rings">
+                        </div>
+                        <h4 class="product-title">O-Rings <span class="arrow"></span></h4>
                         <div class="card-content">
-                            <h4>Rubber Moulded Components</h4>
-                            <p>Custom-designed parts tailored for specialized machinery and unique operational needs.</p>
+                            <p>Circular rubber rings that provide airtight and fluid-tight sealing.</p>
                             <ul>
-                                <li>Precision manufacturing for accuracy</li>
-                                <li>Enhances machinery performance</li>
+                                <li>Used in hydraulic systems</li>
+                                <li>Used in pumps, valves, and engines</li>
                             </ul>
                         </div>
                     </div>
                     <div class="card">
-        <div class="card-image">
-            <img src="https://i.postimg.cc/KzZsC0mj/image.png" alt="Rubber Sheets" style="width:500px; height:180px; object-fit:contain; border-radius:0.5rem;">
-        </div>
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/W3FbXdrD/image.png" alt="Seals">
+                        </div>
+                        <h4 class="product-title">Seals <span class="arrow"></span></h4>
                         <div class="card-content">
-                            <h4>Rubber Sheets</h4>
-                            <p>Versatile sheets offering insulation and protection for a wide range of applications.</p>
+                            <p>Flexible rubber barriers that prevent the entry or escape of fluids or gases.</p>
                             <ul>
-                                <li>Easy to cut and install</li>
-                                <li>Provides robust protective layers</li>
+                                <li>Used in rotating shafts</li>
+                                <li>Used in pipe joints and mechanical equipment</li>
                             </ul>
                         </div>
                     </div>
                     <div class="card">
-        <div class="card-image">
-            <img src="https://i.postimg.cc/28n1yG42/image.png" alt="Vibration Dampers" style="width:800px; height:180px; object-fit:contain; border-radius:0.5rem;">
-        </div>
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/PfCctbyB/image.png" alt="Bushings">
+                        </div>
+                        <h4 class="product-title">Bushings <span class="arrow"></span></h4>
                         <div class="card-content">
-                            <h4>Vibration Dampers</h4>
-                            <p>Specialized components designed to reduce noise and vibration in heavy equipment.</p>
+                            <p>Rubber sleeves that reduce vibration and wear between mechanical parts.</p>
                             <ul>
-                                <li>Improves equipment lifespan</li>
-                                <li>Enhances operational comfort</li>
+                                <li>Used in suspension systems</li>
+                                <li>Used in machinery joints and rotating parts</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/g223Wsqh/image.png" alt="Grommets">
+                        </div>
+                        <h4 class="product-title">Grommets <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Small rubber rings inserted into holes to protect wires or pipes from abrasion.</p>
+                            <ul>
+                                <li>Used in electrical panels</li>
+                                <li>Used in wiring systems and sheet metal parts</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/YS4g4SPq/image.png" alt="Rubber Washers">
+                        </div>
+                        <h4 class="product-title">Rubber Washers <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Flat rubber discs that distribute load and prevent leakage under fasteners.</p>
+                            <ul>
+                                <li>Used in plumbing</li>
+                                <li>Used in automotive and mechanical assemblies</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/Y9YW3sk5/image.png" alt="Bellows / Boots">
+                        </div>
+                        <h4 class="product-title">Bellows / Boots <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Flexible covers that protect moving parts from dust, dirt, and moisture.</p>
+                            <ul>
+                                <li>Used in steering systems</li>
+                                <li>Used in suspension joints and machinery</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/JzFHWLhw/image.png" alt="Rubber Plugs / Stoppers">
+                        </div>
+                        <h4 class="product-title">Rubber Plugs / Stoppers <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Tapered rubber pieces used to seal or close off holes or tubes.</p>
+                            <ul>
+                                <li>Used in laboratory glassware</li>
+                                <li>Used in industrial piping and containers</li>
                             </ul>
                         </div>
                     </div>
@@ -385,78 +698,335 @@ window.addEventListener('resize', function() {
             <div class="tab-content" id="tab2">
                 <div class="grid-container">
                     <div class="card">
-        <div class="card-image">
-            <img src="https://i.postimg.cc/PrSBWszx/image.png" alt="Vibration Dampers" style="width:800px; height:180px; object-fit:contain; border-radius:0.5rem;">
-        </div>
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/htjyXyjc/image.png" alt="Metal-Rubber Bonded Parts">
+                        </div>
+                        <h4 class="product-title">Metal-Rubber Bonded Parts <span class="arrow"></span></h4>
                         <div class="card-content">
-                            <h4>Nitrile (NBR)</h4>
-                            <p>A synthetic rubber with excellent resistance to oils and fuels, perfect for automotive use.</p>
+                            <p>Components where rubber is chemically bonded to metal for enhanced strength and flexibility.</p>
                             <ul>
-                                <li>High oil resistance</li>
-                                <li>Ideal for fuel system components</li>
+                                <li>Used in engine mounts</li>
+                                <li>Used in anti-vibration systems, suspension parts, and noise-reducing devices</li>
                             </ul>
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-image">Image</div>
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/vmwVJTCk/image.png" alt="Anti-Vibration Mounts">
+                        </div>
+                        <h4 class="product-title">Anti-Vibration Mounts <span class="arrow"></span></h4>
                         <div class="card-content">
-                            <h4>PU Rubber</h4>
-                            <p>Known for high durability and abrasion resistance, suitable for demanding environments.</p>
+                            <p>Rubber elements designed to isolate vibrations and absorb shocks in mechanical systems.</p>
                             <ul>
-                                <li>Long-lasting performance</li>
-                                <li>Resistant to wear and tear</li>
+                                <li>Used in motors</li>
+                                <li>Used in compressors, HVAC units, and industrial machinery</li>
                             </ul>
                         </div>
                     </div>
                     <div class="card">
-        <div class="card-image">
-            <img src="https://i.postimg.cc/zv8npfYR/image.png" alt="Vibration Dampers" style="width:800px; height:180px; object-fit:contain; border-radius:0.5rem;">
-        </div>
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/dV21TBSN/image.png" alt="Rubber Pads / Sheets">
+                        </div>
+                        <h4 class="product-title">Rubber Pads / Sheets <span class="arrow"></span></h4>
                         <div class="card-content">
-                            <h4>Neoprene (CR)</h4>
-                            <p>Offers balanced properties with weather resistance for general-purpose applications.</p>
+                            <p>Flat rubber materials available in various thicknesses and hardness levels.</p>
                             <ul>
-                                <li>Good flexibility</li>
-                                <li>Suitable for outdoor use</li>
+                                <li>Used for shock absorption</li>
+                                <li>Used in flooring, gaskets, noise dampening, and protective linings</li>
                             </ul>
                         </div>
                     </div>
                     <div class="card">
-        <div class="card-image">
-            <img src="https://i.postimg.cc/wT3Skxqr/image.png" alt="Vibration Dampers" style="width:800px; height:180px; object-fit:contain; border-radius:0.5rem;">
-        </div>
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/bJsSbnnG/image.png" alt="Rubber Rollers">
+                        </div>
+                        <h4 class="product-title">Rubber Rollers <span class="arrow"></span></h4>
                         <div class="card-content">
-                            <h4>Ethylene Propylene Diene Monomer (EPDM)</h4>
-                            <p>Provides superior weathering and chemical resistance, ideal for outdoor conditions.</p>
+                            <p>Cylindrical rollers covered in rubber for controlled friction and movement.</p>
                             <ul>
-                                <li>Excellent UV resistance</li>
-                                <li>Resistant to acids and alkalis</li>
+                                <li>Used in printing</li>
+                                <li>Used in textile machines, packaging equipment, and conveyor systems</li>
                             </ul>
                         </div>
                     </div>
                     <div class="card">
-        <div class="card-image">
-            <img src="https://i.postimg.cc/HkSG0J5F/image.png" alt="Vibration Dampers" style="width:800px; height:180px; object-fit:contain; border-radius:0.5rem;">
-        </div>
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/nLMhwJhg/image.png" alt="Rubber Diaphragms">
+                        </div>
+                        <h4 class="product-title">Rubber Diaphragms <span class="arrow"></span></h4>
                         <div class="card-content">
-                            <h4>Silicone (Q)</h4>
-                            <p>Offers high-temperature resistance, making it ideal for extreme conditions.</p>
+                            <p>Flexible rubber seals that respond to pressure differences or movement.</p>
                             <ul>
-                                <li>Stable at high temperatures</li>
-                                <li>Flexible in cold environments</li>
+                                <li>Used in pumps</li>
+                                <li>Used in valves, regulators, and fuel or air control systems</li>
                             </ul>
                         </div>
                     </div>
                     <div class="card">
-        <div class="card-image">
-            <img src="https://i.postimg.cc/YCLNRZmk/image.png" alt="Vibration Dampers" style="width:800px; height:180px; object-fit:contain; border-radius:0.5rem;">
-        </div>
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/YqBCgk9H/image.png" alt="Rubber Dampers">
+                        </div>
+                        <h4 class="product-title">Rubber Dampers <span class="arrow"></span></h4>
                         <div class="card-content">
-                            <h4>Viton (FKM)</h4>
-                            <p>Features exceptional chemical and heat resistance for specialized industrial applications.</p>
+                            <p>Rubber-based shock-absorbing devices used to control motion or vibration.</p>
                             <ul>
-                                <li>Resists aggressive chemicals</li>
-                                <li>Performs under high heat</li>
+                                <li>Used in mechanical systems</li>
+                                <li>Used in vehicle parts and industrial equipment</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/HkSG0J5F/image.png" alt="Engine Mounts">
+                        </div>
+                        <h4 class="product-title">Engine Mounts <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Rubber-metal parts that absorb engine vibrations and secure it in place.</p>
+                            <ul>
+                                <li>Used in vehicles</li>
+                                <li>Used in generators and industrial engines for smooth operation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/YCLNRZmk/image.png" alt="Rubber Couplings">
+                        </div>
+                        <h4 class="product-title">Rubber Couplings <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Flexible rubber connectors that join two shafts to transmit torque.</p>
+                            <ul>
+                                <li>Used in power transmission systems</li>
+                                <li>Used in industrial motors and pumps</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="tab3">
+                <div class="grid-container">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/tTfqnWrS/image.png" alt="Oil Seals">
+                        </div>
+                        <h4 class="product-title">Oil Seals <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Designed for sealing in automotive engines and systems.</p>
+                            <ul>
+                                <li>High temperature resistance</li>
+                                <li>Ensures leak-proof performance</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/YCFfjB3Y/image.png" alt="Rubber Hoses">
+                        </div>
+                        <h4 class="product-title">Rubber Hoses <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Flexible tubes made of durable rubber for transporting fluids or air.</p>
+                            <ul>
+                                <li>Used in fuel systems, radiators</li>
+                                <li>Used in fuel coolant lines, and vacuum systems.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/j2NP2z6K/image.png" alt="Suspension Bushes">
+                        </div>
+                        <h4 class="product-title">Suspension Bushes <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Vibration-damping rubber parts that reduce noise and harshness in vehicles.</p>
+                            <ul>
+                                <li>Installed in control arms, stabilizer bars, and shock absorber mounts.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/NjyYHp91/image.png" alt="Shock Absorber Mounts">
+                        </div>
+                        <h4 class="product-title">Shock Absorber Mounts <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Rubber-based mounts that cushion vibrations and impacts from the road.</p>
+                            <ul>
+                                <li>Used to attach shock absorbers to the vehicle frame or suspension.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/cJ2cJ4qR/image.png" alt="Fuel System Seals">
+                        </div>
+                        <h4 class="product-title">Fuel System Seals <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Rubber-based seals that prevent leaks in fuel systems.</p>
+                            <ul>
+                                <li>Used in fuel pumps, injectors, tank openings, and pipe joints.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/ZKdJMwHV/image.png" alt="Dust Covers">
+                        </div>
+                        <h4 class="product-title">Dust Covers <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Protective rubber components that shield parts from dirt, dust, and moisture.</p>
+                            <ul>
+                                <li>Commonly used in suspension systems.</li>
+                                <li>Commonly used in ball joints, and CV joints.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/63rQgYtk/image.png" alt="Door & Window Seals">
+                        </div>
+                        <h4 class="product-title">Door & Window Seals <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Rubber profiles that provide insulation and prevent dust, noise, and water entry.</p>
+                            <ul>
+                                <li>Used around car doors, trunks, windshields, and windows.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="tab4">
+                <div class="grid-container">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/T1dsG3vR/image.png" alt="Silicone Rubber Components">
+                        </div>
+                        <h4 class="product-title">Silicone Rubber Components <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Highly flexible and heat-resistant rubber ideal for sensitive environments.</p>
+                            <ul>
+                                <li>Used in medical devices</li>
+                                <li>Used in food-grade equipment, electronics, and automotive seals</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/wT3Skxqr/image.png" alt="EPDM Rubber Profiles">
+                        </div>
+                        <h4 class="product-title">EPDM Rubber Profiles <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>UV and weather-resistant rubber suitable for outdoor and sealing applications.</p>
+                            <ul>
+                                <li>Used in automotive weather strips</li>
+                                <li>Used in doors, windows, and roofing systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/PrSBWszx/image.png" alt="Nitrile Rubber Parts">
+                        </div>
+                        <h4 class="product-title">Nitrile Rubber Parts <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Oil- and fuel-resistant rubber with high durability.</p>
+                            <ul>
+                                <li>Used in fuel hoses</li>
+                                <li>Used in oil seals, gaskets, and industrial machinery</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/YCLNRZmk/image.png" alt="Viton Seals and Gaskets">
+                        </div>
+                        <h4 class="product-title">Viton Seals and Gaskets <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Premium rubber known for superior chemical and temperature resistance.</p>
+                            <ul>
+                                <li>Ideal for aerospace</li>
+                                <li>Ideal for automotive fuel systems and chemical plants</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/HkSG0J5F/image.png" alt="High-Temperature Rubber Items">
+                        </div>
+                        <h4 class="product-title">High-Temperature Rubber Items <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Engineered to withstand extreme heat without degradation.</p>
+                            <ul>
+                                <li>Used in engines</li>
+                                <li>Used in furnaces, industrial ovens, and insulation applications</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/1zGYbqVg/image.png" alt="Chemical-Resistant Rubber Products">
+                        </div>
+                        <h4 class="product-title">Chemical-Resistant Rubber Products <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Designed to resist harsh acids, alkalis, and solvents.</p>
+                            <ul>
+                                <li>Used in pharmaceutical plants</li>
+                                <li>Used in labs and chemical manufacturing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="tab5">
+                <div class="grid-container">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/3rScCQDz/image.png" alt="Rubber Expansion Joints">
+                        </div>
+                        <h4 class="product-title">Rubber Expansion Joints <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Flexible connectors that absorb vibration and thermal movement in piping systems.</p>
+                            <ul>
+                                <li>Used in bridges</li>
+                                <li>Used in water pipelines, HVAC ducts, and industrial structures</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/FFBTkbM4/image.png" alt="Bridge Bearing Pads">
+                        </div>
+                        <h4 class="product-title">Bridge Bearing Pads <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Support structures that allow controlled movement under load and temperature shifts.</p>
+                            <ul>
+                                <li>Used beneath bridge decks</li>
+                                <li>Used in buildings and heavy infrastructure foundations</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/GmkKfWHL/image.png" alt="Pipe Seals">
+                        </div>
+                        <h4 class="product-title">Pipe Seals <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Ensure leak-proof joints in piping systems.</p>
+                            <ul>
+                                <li>Used in plumbing</li>
+                                <li>Used in sewage systems and underground water lines</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/sfqtCRD7/image.png" alt="Manhole Gaskets">
+                        </div>
+                        <h4 class="product-title">Manhole Gaskets <span class="arrow"></span></h4>
+                        <div class="card-content">
+                            <p>Rubber seals that prevent water ingress and odor escape in manholes.</p>
+                            <ul>
+                                <li>Used in municipal drainage systems</li>
+                                <li>Used in utility covers and waterworks</li>
                             </ul>
                         </div>
                     </div>
