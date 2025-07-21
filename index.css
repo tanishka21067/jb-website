@@ -1,4 +1,5 @@
 
+
 /* Sticky Navbar Styles */
 nav {
     position: sticky;
@@ -154,11 +155,27 @@ nav {
 /* Hero Section */
 #home {
     background-color: #f3f4f6;
+    padding: 6rem 1rem 5rem;
+
     text-align: center;
     margin-top: 0;
 }
 
 .main-slider {
+    width: 100vw;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+}
+
+.container {
+    width: 100vw;
+    max-width: 100vw;
+    overflow: visible;
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
@@ -174,6 +191,7 @@ nav {
 
 .slider {
     display: flex;
+    width: 100vw;
     width: 100%;
     height: 500px;
     position: relative;
@@ -195,7 +213,14 @@ nav {
 }
 
 .slide img {
-    width: 200%; /* Extend image width to cover blank spaces */
+    width: 200%; /* Maximize image width to cover all blank space */
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%; /* Extend image width to cover blank spaces */
     height: 100%;
     object-fit: cover;
    display: block;
@@ -249,6 +274,12 @@ nav {
 
 @media (max-width: 768px) {
     .slider {
+        height: 180px;
+        width: 100vw;
+    }
+    .slide img {
+        width: 250%; /* Even wider on mobile */
+        height: 100%;
         height: 300px;
     }
     .slide img {
@@ -343,6 +374,8 @@ nav {
 }
 
 .card {
+    background-color: #f3f4f6;
+
     background-color: #e2e6ee;
     padding: 1.5rem;
     border-radius: 0.5rem;
