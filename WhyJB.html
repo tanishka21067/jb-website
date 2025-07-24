@@ -4,150 +4,441 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why JB Enterprises - Rubber Moulded Expert</title>
-        <link rel="stylesheet" href="index.css">
-
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.postimg.cc/nrpK88Dx/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="540x540" href="https://i.postimg.cc/vZzpCMxY/android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="540x540" href="https://i.postimg.cc/vZzpCMxY/android-chrome-512x512.png">
+    <link rel="manifest" href="https://i.postimg.cc/vZzpCMxY/android-chrome-512x512.png">
+   
     <style>
-       
-      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        /* Sticky Navbar Styles */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: rgba(30, 58, 138, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    font-family: sans-serif;
+    z-index: 1000; /* Ensure it stays above other content */
+}
 
+
+        /* Navbar Styles */
+        nav {
+            background-color:  #deecff;
+            color: #113f83;
+            padding: 0.3rem 0.5rem !important;
+             
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+          
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height:40px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+       
+
+
+/* Sticky Navigation Styles */
+.main-header {
+    
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1002;
+    transition: var(--transition);
+    background: #f8f8f8;
+    min-width: 0;
+    margin-top: 0;
+}
+
+.main-header.sticky {
+    box-shadow: 0 5px 15px rgba(206, 28, 28, 0.1);
+}
+
+
+
+
+
+.nav-logo h1 {
+    font-size: 1.55rem;
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+
+
+
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-toggle svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+
+ .nav-links {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1.2rem;
+            margin-right: 53px;
+
+        }
+
+        .nav-links a {
+            color:#113f83;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.18rem;
+            padding: 0.2rem 1.0rem;
+            white-space: nowrap;
+        }
+
+        .nav-links a.active {
+            color: #7ca707;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #99BD38;
+        }
+
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 1rem;
+    background-color: rgba(30, 58, 138, 0.98);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    transition: background-color 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu a:last-child {
+    border-bottom: none;
+}
+
+.mobile-menu a.active {
+    color: #93c5fd;
+    font-weight: 600;
+    background-color: rgba(147, 197, 253, 0.1);
+}
+
+.mobile-menu a:hover {
+    color: #93c5fd;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.logo {
+            width: 10%;
+            height: auto;
+        }
+/* Running Note Styles */
+        .running-note {
+            background: #113f83;
+            color: white;
+            padding: 7px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 1rem;
+            font-weight: 500;
+            position: fixed;
+            top: 64px; /* Height of navbar, adjust if needed */
+            left: 0;
+            z-index: 1020;
+            width: 100vw;
+            margin-top: 20px;
+        }
+
+        body {
+            padding-top: 104px; /* 64px navbar + 40px running note (adjust as needed) */
+        }
+
+        .running-note__text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll 30s linear infinite;
+            -webkit-animation: scroll 30s linear infinite;
+        }
+
+        .running-note__text a {
+            color: #b01515;
+            text-decoration: underline;
+        }
+
+        .running-note__text a:hover {
+            color: #b71e1e;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+                -webkit-transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+                -webkit-transform: translateX(-100%);
+            }
+        }
+
+        .running-note:hover .running-note__text {
+            animation-play-state: paused;
+        }
+
+
+        @media (max-width: 900px) {
+            .running-note {
+                font-size: 0.9rem;
+                padding: 10px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle svg {
+                color: #113f83 !important;
+                stroke: #113f83 !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .running-note {
+                font-size: 0.85rem;
+                padding: 8px 0;
+                margin-top: -5px;
+            }
+            .running-note__text {
+                animation: scroll 8s linear infinite;
+                -webkit-animation: scroll 8s linear infinite;
+            }
+        }
         #why-us {
             background-color: #f3f4f6;
             padding: 5rem 1rem;
         }
-
         #why-us h2 {
             font-size: 1.875rem;
-            font-weight: bold;
-            color: #1e3a8a;
+            color: white;
             text-align: center;
             margin-bottom: 2rem;
         }
-
         #why-us p {
             font-size: 1.125rem;
-            color: #4b5563;
+            color: rgb(78, 76, 76);
             text-align: center;
             margin-bottom: 2rem;
             max-width: 48rem;
             margin-left: auto;
             margin-right: auto;
         }
-
+        .why-us-text-band {
+            background-color: #1e3a8a;
+            padding: 2rem 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .why-us-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 2rem auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-height: 300px;
+            object-fit: cover;
+        }
         .grid-container {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1rem;
         }
-
         @media (min-width: 768px) {
             .grid-container {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-
         @media (min-width: 1024px) {
             .grid-container {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
-
         .card {
             background-color: white;
             padding: 1.5rem;
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
+        /* Service Box (card) Text Color */
         .card h3 {
             font-size: 1.25rem;
             font-weight: 600;
-            color: #1e3a8a;
+            color: #1e3a8a; /* Changed to deep orange for service box headings */
             margin-bottom: 1rem;
+            text-align: center;
         }
-
         .card p {
             font-size: 1rem;
-            color: #4b5563;
+            color: #37474f; /* Changed to dark blue-grey for service box text */
         }
-
-        /* Footer */
-        footer {
-            background-color: #1e3a8a;
-            color: white;
-            padding: 2rem 1rem;
+        /* Why Us Content Text Color (keep as is, or override if needed) */
+        .why-us-text-band h2,
+        .why-us-text-band p {
+            color: #fff !important;
         }
+        
+/* footer */
+footer {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 2rem 1rem;
+}
 
-        footer .container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+footer .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .footer-card {
-            background-color: #2b4a8c;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+.footer-card {
+    background-color: #2b4a8c;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        .footer-card h3 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #d1d5db;
-        }
+.footer-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #d1d5db;
+}
 
-        .footer-card p, .footer-card a {
-            color: #d1d5db;
-            font-size: 1rem;
-            text-decoration: none;
-            line-height: 1.5;
-        }
+.footer-card p, .footer-card a {
+    color: #d1d5db;
+    font-size: 1rem;
+    text-decoration: none;
+    line-height: 1.5;
+}
 
-        .footer-card a:hover {
-            color: #93c5fd;
-        }
+.footer-card a:hover {
+    color: #93c5fd;
+}
 
-        .footer-card ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
+.footer-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
 
-        .footer-card .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
+.footer-card .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
 
-        .footer-card .social-links a {
-            display: flex;
-            align-items: center;
-        }
+.footer-card .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #d1d5db;
+    transition: color 0.3s;
+}
 
-        .footer-card .social-links svg {
-            width: 1.25rem;
-            height: 1.25rem;
-            margin-right: 0.25rem;
-        }
+.footer-card .social-links a:hover {
+    color: #25D366; /* WhatsApp green for hover effect */
+}
 
-        @media (min-width: 1024px) {
-            footer .container {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
+.footer-card .social-links i {
+    font-size: 1.2em;
+}
 
-        .copyright {
-            text-align: center;
-            color: #d1d5db;
-            margin-top: 1.5rem;
-            grid-column: 1 / -1;
-        }
+.neu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #2b4a8c;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px #1e3a8a, -5px -5px 10px #3a5a9e;
+    transition: all 0.3s ease;
+}
 
+.neu-button:hover {
+    box-shadow: inset 5px 5px 10px #1e3a8a, inset -5px -5px 10px #3a5a9e;
+}
+
+.copyright {
+    text-align: center;
+    color: #d1d5db;
+    margin-top: 1.5rem;
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+    footer .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 768px) {
+    footer .container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* end of footer */
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -166,8 +457,6 @@
     </style>
 </head>
 <body>
-            <header class="main-header">    
-
     <nav>
         <div class="container nav-container">
             <div class="nav-logo">
@@ -176,51 +465,49 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 </button>
+                <img src="https://i.postimg.cc/SQYj41rF/Jb-PNG.png" alt="JB Enterprises Logo" class="logo">
                 <h1>JB Enterprises</h1>
             </div>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
-                <a class="nav-link" href="AboutUs.html">About Us</a>
-                <a class="active" href="WhyJB.html">Why Us</a>
+                <a class="nav-link" href="AboutUs.html">AboutUs</a>
+                <a class="active" href="WhyJB.html">WhyUs</a>
                 <a class="nav-link" href="Products.html">Products</a>
                 <a class="nav-link" href="industries.html">Industries</a>
             </div>
         </div>
         <div class="mobile-menu container" id="mobile-menu" style="display: none;">
             <a href="index.html" class="nav-link">Home</a>
-                <a class="nav-link" href="AboutUs.html">About Us</a>
-                <a class="active" href="WhyJB.html">Why Us</a>
-                <a class="nav-link" href="Products.html">Products</a>
-                <a class="nav-link" href="industries.html">Industries</a>
+            <a class="nav-link" href="AboutUs.html">AboutUs</a>
+            <a class="active" href="WhyJB.html">WhyUs</a>
+            <a class="nav-link" href="Products.html">Products</a>
+            <a class="nav-link" href="industries.html">Industries</a>
         </div>
     </nav>
-    </header>
-</body>
-<script>
-// Hamburger menu toggle for both laptop and mobile
-function toggleMenu() {
-    var menu = document.getElementById('mobile-menu');
-    if (menu.style.display === 'flex') {
-        menu.style.display = 'none';
-    } else {
-        menu.style.display = 'flex';
-    }
-}
-// Hide mobile menu on resize if desktop
-window.addEventListener('resize', function() {
-    var menu = document.getElementById('mobile-menu');
-    if (window.innerWidth > 768) {
-        menu.style.display = 'none';
-    }
-});
-</script>
+    <!-- Running Note Section (moved below nav) -->
+
+<div class="running-note">
+    <span class="running-note__text">
+        📢"Decades of Expertise, One Commitment: Quality." 📢
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        📢"Shaping Precision. Delivering Trust." 📢
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        📢"Built for Performance. Made with Precision." 📢
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        📢"Precision-Made Rubber for Every Industry Need." 📢
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+</div>
 
     <section id="why-us">
         <div class="container">
+            <div class="why-us-text-band">
+                
             <h2>Why JB Enterprises?</h2>
             <p>
                 At JB Enterprises, we are committed to delivering exceptional rubber moulded products that empower industries worldwide. Here’s why we are your trusted partner:
-            </p>
+            </p></div>
+            <img src="https://i.postimg.cc/j2zYfjD9/image.png" alt="Rubber Moulded Products" class="why-us-image">
             <div class="grid-container">
                 <div class="card">
                     <h3>Decades of Expertise</h3>
@@ -262,66 +549,70 @@ window.addEventListener('resize', function() {
         </div>
     </section>
 
-   <footer>
-        <div class="container">
-            <div class="footer-card">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="AboutUs.html">About Us</a></li>
-                    <li><a href="WhyJB.html">Why Us</a></li>
-                    <li><a href="Products.html">Products</a></li>
-                    <li><a href="Industries.html">Industries</a></li>
-                </ul>
+    <footer>
+    <div class="container">
+        <div class="footer-card">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="WhyJB.html">Why Us</a></li>
+                <li><a href="Products.html">Products</a></li>
+                <li><a href="Industries.html">Industries</a></li>
+            </ul>
+        </div>
+        <div class="footer-card">
+            <h3>Contact Us</h3>
+            <p>
+                Email: <br>
+                jbenterprisesmarketing@gmail.com 
+                Phone: +91 9657185715<br>
+            </p>
+            <div class="social-links">
+                <a href="https://wa.me/9657185715" target="_blank" class="neu-button" aria-label="WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#25D366"/><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.967-.94 1.166-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.447-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.571-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.099 3.205 5.077 4.372.71.306 1.263.489 1.695.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#fff"/></svg>
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&to=jbenterprisesmarket@gmail.com" class="neu-button" aria-label="Mail">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48"><rect width="48" height="48" rx="24" fill="#fff"/><path d="M44 14.5v19c0 2.2-1.8 4-4 4H8c-2.2 0-4-1.8-4-4v-19c0-2.2 1.8-4 4-4h32c2.2 0 4 1.8 4 4z" fill="#EA4335"/><path d="M44 14.5v19c0 2.2-1.8 4-4 4H8c-2.2 0-4-1.8-4-4v-19c0-2.2 1.8-4 4-4h32c2.2 0 4 1.8 4 4z" fill="#fff"/><path d="M8 14.5l16 13.5 16-13.5" stroke="#EA4335" stroke-width="2"/><path d="M8 14.5v19c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-19" stroke="#EA4335" stroke-width="2"/><path d="M8 14.5l16 13.5 16-13.5" stroke="#34A853" stroke-width="2"/><path d="M8 14.5v19c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-19" stroke="#4285F4" stroke-width="2"/><path d="M8 14.5l16 13.5 16-13.5" stroke="#FBBC05" stroke-width="2"/></svg>
+                </a>
+                <a href="https://x.com" target="_blank" class="neu-button" aria-label="Twitter">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#000"/><path d="M19.633 7.997c-.508.226-1.053.379-1.626.448a2.825 2.825 0 0 0 1.237-1.56 5.657 5.657 0 0 1-1.793.685 2.82 2.82 0 0 0-4.803 2.57A8.004 8.004 0 0 1 5.67 7.15a2.82 2.82 0 0 0 .873 3.77c-.47-.015-.912-.144-1.297-.36v.036a2.82 2.82 0 0 0 2.263 2.765c-.222.06-.456.092-.697.092-.17 0-.336-.017-.497-.048a2.824 2.824 0 0 0 2.635 1.96A5.66 5.66 0 0 1 4 17.013a7.98 7.98 0 0 0 4.32 1.266c5.184 0 8.025-4.295 8.025-8.025 0-.122-.003-.243-.009-.364a5.73 5.73 0 0 0 1.397-1.463z" fill="#fff"/></svg>
+                </a>
+                <a href="tel:+919594379750" class="neu-button" aria-label="Phone">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#34B7F1"/><path d="M17.707 15.293l-2.122-2.122a1 1 0 0 0-1.414 0l-.707.707a8.001 8.001 0 0 1-3.535-3.535l.707-.707a1 1 0 0 0 0-1.414L8.707 6.293a1 1 0 0 0-1.414 0l-1.293 1.293a2 2 0 0 0-.293 2.293c1.392 3.484 4.522 6.614 8.006 8.006a2 2 0 0 0 2.293-.293l1.293-1.293a1 1 0 0 0 0-1.414z" fill="#fff"/></svg>
+                </a>
             </div>
-            <div class="footer-card">
-                <h3>Contact Us</h3>
-                <p>
-                
-                    Email: <br>
-                    jbenterprisesmarketing@gmail.com /<br> 
-                    vithalsaruk.vs@gmail.com<br>
-                    Phone: +91 9594379750<br>
-                </p>
-                 <div class="social-links">
-                    <a href="#" style="display: flex; align-items: center;">
-                        <svg fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 9h2v2H7V9zm0 4h2v2H7v-2zm4-4h2v2h-2V9zm0 4h2v2h-2v-2zm4-4h2v2h-2V9zm0 4h2v2h-2v-2z"/>
-                        </svg>
-                        LinkedIn
-                    </a></div>
-                    <div class="social-links">
-                    <a href="#" style="display: flex; align-items: center;">
-                        <svg fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M22.46 6C21.69 4.61 20.14 3.7 18.5 3.7c-1.64 0-3.19.91-3.96 2.3-.51 1.07-.59 2.29-.25 3.42.24.79.71 1.52 1.36 2.17C10.41 13.42 8.87 14.33 7.23 14.33c-2.48 0-4.5-1.01-6-2.73V6h12v12H7.23c1.5 1.72 3.52 2.73 6 2.73s4.5-1.01 6-2.73c.75-.65 1.22-1.38 1.46-2.17.34-1.13.26-2.35-.25-3.42zm-3.04 2.3c-.51-1.07-1.64-1.72-2.8-1.72H9.2c-1.16 0-2.29.65-2.8 1.72-.51 1.07-.59 2.29-.25 3.42.24.79.71 1.52 1.36 2.17 1.25 1.25 3.03 2 4.89 2 1.86 0 3.64-.75 4.89-2 .65-.65 1.12-1.38 1.36-2.17.34-1.13.26-2.35-.25-3.42z"/>
-                        </svg>
-                        Twitter
-                    </a> </div>
-                    <div class="social-links">
-                     <a href="tel:+919876543210" style="display: flex; align-items: center;">
-                        <svg fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M6.62 10.79c0 1.14.28 2.24.81 3.21.53.97 1.27 1.83 2.16 2.48.89.65 1.92 1.09 3.01 1.09 1.09 0 2.12-.44 3.01-1.09.89-.65 1.63-1.51 2.16-2.48.53-.97.81-2.07.81-3.21 0-3.31-2.69-6-6-6-3.31 0-6 2.69-6 6zm1.41 0h9.18c0-2.76-2.24-5-5-5s-5 2.24-5 5zm5 2.24c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 2.24c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
-                        </svg>
-                        Phone
-                    </a>
-                    </div>
-                </div>
-        
-            
-            <div class="footer-card">
-                <h3>Address</h3>
-                <p>
-                    Office 1:<br>
-                    Plot No.12/27/Block No.-D-1, Near Vaishali Hotel,<br>
-                    MIDC, Thermax Chowk, Chinchwad, Pune-19<br>
-                   Office 2:<br>
-                    Plot No.E-104 Gitamai Enterprises, Ranjangaon shenapunji, Gangapur waluj MIDC, Chatrapati Sambhaji Nagar. 
-                </p>
-        
-            
+        </div>
+        <div class="footer-card">
+            <h3>Address</h3>
+            <p>
+                Office 1:<br>
+                Plot No.12/27/Block No.-D-1, Near Vaishali Hotel,<br>
+                MIDC, Thermax Chowk, Chinchwad, Pune-19<br>
+                Office 2:<br>
+                Plot No.E-104 Gitamai Enterprises, Ranjangaon shenapunji, Gangapur waluj MIDC, Chatrapati Sambhaji Nagar. 
+            </p>
         </div> 
-                       <div class="copyright">© 2025 JB Enterprises. All rights reserved.</div>
-        </div>  
-    </footer>
+        <div class="copyright">© 2025 JB Enterprises. All rights reserved.</div>
+    </div>  
+</footer>
+    <script>
+        // Hamburger menu toggle for both laptop and mobile
+        function toggleMenu() {
+            var menu = document.getElementById('mobile-menu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+        // Hide mobile menu on resize if desktop
+        window.addEventListener('resize', function() {
+            var menu = document.getElementById('mobile-menu');
+            if (window.innerWidth > 768) {
+                menu.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
