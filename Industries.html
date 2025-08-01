@@ -17,208 +17,115 @@
             font-family: sans-serif;
         }
 /* Sticky Navbar Styles */
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    background-color: rgba(30, 58, 138, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    font-family: sans-serif;
-    z-index: 1000; /* Ensure it stays above other content */
-}
 
-
-        /* Navbar Styles */
-        nav {
-            background-color:  #deecff;
-            color: #113f83;
-            padding: 0.3rem 0.5rem !important;
-             
+        .main-header {
+            height: 78px; /* Increased height for better visibility */
+            background: #ffffff;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 101;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-          
+        nav {
+            padding: 0.3rem 0.5rem !important;
         }
 
         .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            min-height:80px;
-        }
-
-        .nav-logo {
+            min-height: 78px; /* Adjusted to match the header height */
             display: flex;
             align-items: center;
         }
 
-       
-
-
-/* Sticky Navigation Styles */
-.main-header {
-    
-    top: 0;
-    left: 0;
-    width: 100vw;
-    z-index: 1002;
-    transition: var(--transition);
-    background: #f8f8f8;
-    min-width: 0;
-    margin-top: 0;
-}
-
-.main-header.sticky {
-    box-shadow: 0 5px 15px rgba(206, 28, 28, 0.1);
-}
-
-
-
-
-
-.nav-logo h1 {
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            
+        }
+        .nav-logo h1 {
     font-size: 1.55rem;
     font-weight: bold;
     margin-left: 1rem;
 }
 
-
-
-
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    transition: background-color 0.3s ease;
-}
-
-.menu-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.menu-toggle svg {
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-
-
- .nav-links {
+        .nav-logo, .nav-links, .mobile-menu {
             display: flex;
+            align-items: center;
+        }
+        .nav-links {
             flex-wrap: nowrap;
-            gap: 1.2rem;
-            margin-right: 53px;
-
+            margin-right : 5%;
         }
-
         .nav-links a {
-            color:#113f83;
+    color: #113f83;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.18rem;
+    padding: 0.2rem 1.0rem;
+                white-space: nowrap;
+
+}
+      
+
+        /* Mobile Menu Styles */
+        .mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    position: absolute;
+    top: 100px;
+        left: -1rem;
+    min-width: 100%;
+    max-width: 250%;
+    width: 323px;
+    background: #1e3a8a;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+    padding: 1rem 0.5rem;
+    align-items: center;
+}
+        .mobile-menu a {
+            color: white;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 1.18rem;
-            padding: 0.2rem 1.0rem;
-            white-space: nowrap;
+            padding: 0.5rem 1.2rem;
+            font-size: 1.08rem;
+            box-sizing: border-box;
         }
 
-        .nav-links a.active {
-            color: #7ca707;
+        .mobile-menu a.active {
+            color: #93c5fd;
             font-weight: 600;
         }
 
-        .nav-links a:hover {
-            color: #99BD38;
+        .mobile-menu a:hover {
+            color: #93c5fd;
         }
 
-.mobile-menu {
-    display: none;
-    flex-direction: column;
-    gap: 0;
-    margin-top: 1rem;
-    background-color: rgba(30, 58, 138, 0.98);
-    border-radius: 0.5rem;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.mobile-menu a {
-    color: white;
-    text-decoration: none;
-    padding: 1rem 1.5rem;
-    transition: background-color 0.3s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mobile-menu a:last-child {
-    border-bottom: none;
-}
-
-.mobile-menu a.active {
-    color: #93c5fd;
-    font-weight: 600;
-    background-color: rgba(147, 197, 253, 0.1);
-}
-
-.mobile-menu a:hover {
-    color: #93c5fd;
-    background-color: rgba(255, 255, 255, 0.1);
-}
-.logo {
-            width: 10%;
-            height: auto;
+        /* Hide desktop nav links on mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none !important;
+            }
         }
-/* Running Note Styles */
+
+        /* Running Note Styles */
         .running-note {
             background: #113f83;
             color: white;
-            padding: 7px 0;
+            padding: 5px 0;
             overflow: hidden;
             white-space: nowrap;
             font-size: 1rem;
             font-weight: 500;
-            position: fixed;
-            top: 64px; /* Height of navbar, adjust if needed */
-            left: 0;
-            z-index: 1020;
+            position:fixed;
+            
+            z-index: 102;
             width: 100vw;
-            margin-top: 20px;
-        }
-
-        body {
-            padding-top: 104px; /* 64px navbar + 40px running note (adjust as needed) */
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                position: sticky;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                z-index: 1000;
-            }
-            .running-note {
-                position: sticky;
-                top: 56px; /* Adjust if your mobile nav is shorter */
-                left: 0;
-                z-index: 1020;
-            }
-            body {
-                padding-top: 0px; /* Adjust for mobile nav + running note height */
-            }
+            margin-top: 85px;
+            left: 0;
         }
 
         .running-note__text {
@@ -252,7 +159,6 @@ nav {
             animation-play-state: paused;
         }
 
-
         @media (max-width: 900px) {
             .running-note {
                 font-size: 0.9rem;
@@ -260,18 +166,10 @@ nav {
             }
         }
 
-        @media (max-width: 768px) {
-            .menu-toggle svg {
-                color: #113f83 !important;
-                stroke: #113f83 !important;
-            }
-        }
-
         @media (max-width: 600px) {
             .running-note {
                 font-size: 0.85rem;
                 padding: 8px 0;
-                margin-top: -5px;
             }
             .running-note__text {
                 animation: scroll 8s linear infinite;
@@ -279,6 +177,63 @@ nav {
             }
         }
 
+        .logo {
+            width: 13%;
+            height: 13%;
+            margin-left: -30px;
+        }
+ 
+        /* Enquiry Button Styles */
+        .enquiry-button {
+            background-color: #4CAF50; /* Green background */
+            color: rgb(0, 0, 0); /* White text */
+            padding: 0.19rem 13rem; /* Some padding */
+            text-align: center; /* Centered text */
+            text-decoration: none; /* No underline */
+            display: inline-block; /* Make the link behave like a button */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s; /* Smooth transition for hover effect */
+            font-weight: bold; /* Bold text */
+        }
+
+        .enquiry-button:hover {
+            background-color: #170a87; /* Darker green on hover */
+        }
+
+        /* Removing button styles for 'Enquiry Now' link */
+.nav-links a.enquiry-button {
+    background-color: unset; /* Remove button background */
+    color: #113f83; /* Match normal text color */
+    padding: 0.2rem 1.0rem; /* Match normal text padding */
+    border-radius: unset; /* Remove rounded corners */
+    font-weight: 500; /* Match normal text weight */
+    text-decoration: none; /* Ensure no underline */
+}
+
+.nav-links a.enquiry-button:hover {
+    background-color: unset; /* Remove hover background */
+            color: #99BD38;
+}
+
+/* Adjusting slider styles to shift slightly to the right */
+.main-slider .container {
+    margin-left: 45px; /* Shifting slider to the right */
+    margin-top: -14px;
+}
+
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .nav-logo {
+        justify-content: flex-end;
+    }
+    .nav-logo h1 {
+        margin-right: 1rem;
+    }
+    .main-header {
+        background-color: blue;
+    }
+}
         #industries {
             background-color: #f3f4f6;
             padding: 5rem 1rem;
@@ -286,7 +241,7 @@ nav {
 
         #industries h2 {
             font-size: 2rem;
-            
+            margin-top: 6%;
             color: #1e3a8a;
             text-align: center;
             margin-bottom: 2rem;
@@ -538,35 +493,37 @@ footer .container {
     </style>
 </head>
 <body>
-    <nav>
-        <div class="container nav-container">
-            <div class="nav-logo">
-                <button class="menu-toggle" aria-label="Toggle Menu" onclick="toggleMenu()">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-                <img src="https://i.postimg.cc/SQYj41rF/Jb-PNG.png" alt="JB Enterprises Logo" class="logo">
-                <h1>JB Enterprises</h1>
+      <header class="main-header">
+        <nav>
+            <div class="container nav-container">
+                <div class="nav-logo">
+                    <button class="menu-toggle" aria-label="Toggle Menu" onclick="toggleMenu()">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                    <img src="https://i.postimg.cc/SQYj41rF/Jb-PNG.png" alt="JB Enterprises Logo" class="logo">
+                    <h1>JB Enterprises</h1>
+                </div>
+                <div class="nav-links">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="AboutUs.html">About Us</a>
+                    <a class="nav-link" href="WhyJB.html">Why Us</a>
+                    <a class="nav-link" href="Products.html">Products</a>
+                    <a href="Industries.html" class="active">Industries</a>
+                  <a class="nav-link " href="enquiry.html">Enquiry Now</a>
+                </div>
             </div>
-            <div class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
-                <a class="nav-link" href="AboutUs.html">AboutUs</a>
-                <a class="nav-link" href="WhyJB.html">WhyUs</a>
-                <a class="nav-link" href="Products.html">Products</a>
-                <a class="active" href="Industries.html">Industries</a>
-            </div>
-        </div>
-        <div class="mobile-menu container" id="mobile-menu" style="display: none;">
-            <a href="index.html" class="nav-link">Home</a>
-            <a class="nav-link" href="AboutUs.html">AboutUs</a>
-            <a class="nav-link" href="WhyJB.html">WhyUs</a>
-            <a class="nav-link" href="Products.html">Products</a>
-            <a class="active" href="Industries.html">Industries</a>
-        </div>
-    </nav>
-    <!-- Running Note Section (moved below nav) -->
-
+            <div class="mobile-menu container" id="mobile-menu" style="display: none;">
+                  <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="AboutUs.html">About Us</a>
+                    <a class="nav-link" href="WhyJB.html">Why Us</a>
+                    <a class="nav-link" href="Products.html">Products</a>
+                    <a href="Industries.html" class="active">Industries</a>
+                  <a class="nav-link " href="enquiry.html">Enquiry Now</a>
+                </div>
+        </nav>
+    </header>
 <div class="running-note">
     <span class="running-note__text">
         📢"Decades of Expertise, One Commitment: Quality." 📢
@@ -591,7 +548,7 @@ footer .container {
             </p>
             <div class="industry-sections">
                 <div class="industry-section">
-                    <img src="https://i.postimg.cc/3RTh9p21/image.png" alt="Automotive Industry">
+                    <img src="https://i.postimg.cc/SNxDgYVF/image.png" alt="Automotive Industry">
                     <h3>Automotive</h3>
                     <p>
                         We provide robust rubber solutions to enhance vehicle performance, safety, and longevity in the automotive sector.
@@ -603,7 +560,7 @@ footer .container {
                     </ul>
                 </div>
                 <div class="industry-section">
-                    <img src="https://i.postimg.cc/Yq9HXtL5/image.png" alt="Electrical and Electronics Industry">
+                    <img src="https://i.postimg.cc/gkXnhm9v/image.png" alt="Electrical and Electronics Industry" style="zoom: -100px;" >
                     <h3>Electrical and Electronics</h3>
                     <p>
                         Specialized rubber components ensure protection and safety for electrical and electronic systems.
@@ -615,7 +572,7 @@ footer .container {
                     </ul>
                 </div>
                 <div class="industry-section">
-                    <img src="https://i.postimg.cc/y83zHnPn/image.png" alt="Pharmaceutical and Medical Industry">
+                    <img src="https://i.postimg.cc/W48VckRm/image.png" alt="Pharmaceutical and Medical Industry">
                     <h3>Pharmaceutical & Medical</h3>
                     <p>
                         High-quality, biocompatible rubber components ensure safety and precision in pharmaceutical and medical applications.
@@ -627,7 +584,7 @@ footer .container {
                     </ul>
                 </div>
                 <div class="industry-section">
-                    <img src="https://i.postimg.cc/vmRwH92y/image.png" alt="Construction and Infrastructure Industry">
+                    <img src="https://i.postimg.cc/3xvRWT4d/image.png" alt="Construction and Infrastructure Industry">
                     <h3>Construction & Infrastructure</h3>
                     <p>
                         We offer durable rubber products to support infrastructure development, maintenance, and heavy machinery operations.
@@ -639,7 +596,7 @@ footer .container {
                     </ul>
                 </div>
                 <div class="industry-section">
-                    <img src="https://i.postimg.cc/y6fq32pv/image.png" alt="Industrial Machinery Industry">
+                    <img src="https://i.postimg.cc/wjb38ZhT/image.png" alt="Industrial Machinery Industry">
                     <h3>Industrial Machinery & Equipment</h3>
                     <p>
                         Advanced rubber solutions optimize durability and efficiency in industrial machinery and equipment.
@@ -651,7 +608,7 @@ footer .container {
                     </ul>
                 </div>
                 <div class="industry-section">
-                    <img src="https://i.postimg.cc/ZqzXhm0K/image.png" alt="Transportation and Railways Industry">
+                    <img src="https://i.postimg.cc/52MSQPy3/image.png" alt="Transportation and Railways Industry">
                     <h3>Transportation & Railways</h3>
                     <p>
                         High-performance rubber components ensure durability and safety in transportation and railway systems.
@@ -662,7 +619,7 @@ footer .container {
                     </ul>
                 </div>
                 <div class="industry-section">
-                    <img src="https://i.postimg.cc/MTdLRj5v/image.png" alt="Oil and Gas / Chemical Industry">
+                    <img src="https://i.postimg.cc/SQM9LWwt/image.png" alt="Oil and Gas / Chemical Industry">
                     <h3>Oil and Gas / Chemical</h3>
                     <p>
                         Specialized rubber solutions ensure safety, efficiency, and durability in the challenging oil and gas / chemical industry.
@@ -674,7 +631,7 @@ footer .container {
                     </ul>
                 </div>
                 <div class="industry-section">
-                    <img src="https://i.postimg.cc/05X3yDr4/image.png" alt="HVAC and Plumbing Industry">
+                    <img src="https://i.postimg.cc/CKYr0rYX/image.png" alt="HVAC and Plumbing Industry">
                     <h3>HVAC & Plumbing</h3>
                     <p>
                         Durable rubber components ensure reliable sealing and weatherproofing in HVAC and plumbing systems.
@@ -716,19 +673,17 @@ footer .container {
                 +91 9657185715<br>
             </p>
             <div class="social-links">
-                <a href="https://wa.me/9657185715" target="_blank" class="neu-button" aria-label="WhatsApp">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#25D366"/><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.967-.94 1.166-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.447-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.571-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.099 3.205 5.077 4.372.71.306 1.263.489 1.695.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#fff"/></svg>
-                </a>
-                <a href="https://mail.google.com/mail/?view=cm&to=jbenterprisesmarket@gmail.com" class="neu-button" aria-label="Mail">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48"><rect width="48" height="48" rx="24" fill="#fff"/><path d="M44 14.5v19c0 2.2-1.8 4-4 4H8c-2.2 0-4-1.8-4-4v-19c0-2.2 1.8-4 4-4h32c2.2 0 4 1.8 4 4z" fill="#EA4335"/><path d="M44 14.5v19c0 2.2-1.8 4-4 4H8c-2.2 0-4-1.8-4-4v-19c0-2.2 1.8-4 4-4h32c2.2 0 4 1.8 4 4z" fill="#fff"/><path d="M8 14.5l16 13.5 16-13.5" stroke="#EA4335" stroke-width="2"/><path d="M8 14.5v19c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-19" stroke="#EA4335" stroke-width="2"/><path d="M8 14.5l16 13.5 16-13.5" stroke="#34A853" stroke-width="2"/><path d="M8 14.5v19c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-19" stroke="#4285F4" stroke-width="2"/><path d="M8 14.5l16 13.5 16-13.5" stroke="#FBBC05" stroke-width="2"/></svg>
-                </a>
-                <a href="https://x.com" target="_blank" class="neu-button" aria-label="Twitter">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#000"/><path d="M19.633 7.997c-.508.226-1.053.379-1.626.448a2.825 2.825 0 0 0 1.237-1.56 5.657 5.657 0 0 1-1.793.685 2.82 2.82 0 0 0-4.803 2.57A8.004 8.004 0 0 1 5.67 7.15a2.82 2.82 0 0 0 .873 3.77c-.47-.015-.912-.144-1.297-.36v.036a2.82 2.82 0 0 0 2.263 2.765c-.222.06-.456.092-.697.092-.17 0-.336-.017-.497-.048a2.824 2.824 0 0 0 2.635 1.96A5.66 5.66 0 0 1 4 17.013a7.98 7.98 0 0 0 4.32 1.266c5.184 0 8.025-4.295 8.025-8.025 0-.122-.003-.243-.009-.364a5.73 5.73 0 0 0 1.397-1.463z" fill="#fff"/></svg>
-                </a>
-                <a href="tel:+919594379750" class="neu-button" aria-label="Phone">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#34B7F1"/><path d="M17.707 15.293l-2.122-2.122a1 1 0 0 0-1.414 0l-.707.707a8.001 8.001 0 0 1-3.535-3.535l.707-.707a1 1 0 0 0 0-1.414L8.707 6.293a1 1 0 0 0-1.414 0l-1.293 1.293a2 2 0 0 0-.293 2.293c1.392 3.484 4.522 6.614 8.006 8.006a2 2 0 0 0 2.293-.293l1.293-1.293a1 1 0 0 0 0-1.414z" fill="#fff"/></svg>
-                </a>
-            </div>
+    <a href="https://mail.google.com/mail/?view=cm&to=jbenterprisesmarket@gmail.com" class="neu-button" aria-label="Mail">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48"><rect width="48" height="48" rx="24" fill="#fff"/><path d="M44 14.5v19c0 2.2-1.8 4-4 4H8c-2.2 0-4-1.8-4-4v-19c0-2.2 1.8-4 4-4h32c2.2 0 4 1.8 4 4z" fill="#EA4335"/><path d="M44 14.5v19c0 2.2-1.8 4-4 4H8c-2.2 0-4-1.8-4-4v-19c0-2.2 1.8-4 4-4h32c2.2 0 4 1.8 4 4z" fill="#fff"/><path d="M8 14.5l16 13.5 16-13.5" stroke="#EA4335" stroke-width="2"/><path d="M8 14.5v19c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-19" stroke="#EA4335" stroke-width="2"/><path d="M8 14.5l16 13.5 16-13.5" stroke="#34A853" stroke-width="2"/><path d="M8 14.5v19c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-19" stroke="#4285F4" stroke-width="2"/><path d="M8 14.5l16 13.5 16-13.5" stroke="#FBBC05" stroke-width="2"/></svg>
+    </a>
+    <a href="https://wa.me/919657185715" target="_blank" class="neu-button" aria-label="WhatsApp">
+        <!-- WhatsApp SVG Icon (maximized) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="20" fill="#fff"/>
+            <path d="M24 13c-6.075 0-11 4.925-11 11 0 1.937.507 3.77 1.47 5.39L13 35l5.01-1.315A10.96 10.96 0 0 0 24 35c6.075 0 11-4.925 11-11s-4.925-11-11-11zm0 20c-1.56 0-3.09-.31-4.51-.92l-.32-.13-2.98.78.8-2.9-.17-.29A8.97 8.97 0 0 1 15 24c0-4.963 4.037-9 9-9s9 4.037 9 9-4.037 9-9 9zm4.43-6.36c-.24-.12-1.41-.7-1.63-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.18-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.02-.37.1-.49.1-.1.22-.26.33-.39.11-.13.14-.23.22-.39.08-.16.04-.3-.02-.42-.06-.12-.54-1.29-.74-1.77-.2-.48-.39-.41-.54-.42-.14-.01-.31-.01-.48-.01-.17 0-.44.06-.67.31-.23.25-.85.8-.85 1.95 0 1.15.84 2.26.96 2.42.12.16 1.66 2.54 4.02 3.46.56.24 1 .39 1.34.5.56.18 1.07.15 1.47.09.45-.07 1.37-.57 1.56-1.12.19-.55.19-1.02.13-1.12-.06-.1-.21-.16-.49-.29z" fill="#113f83"/>
+        </svg>
+    </a>
+</div>
         </div>
         <div class="footer-card">
             <h3>Address</h3>
